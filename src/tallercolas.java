@@ -83,7 +83,10 @@ public class tallercolas extends JDialog {
         roundRobinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                procesamiento.setText("");
                 roundRobin();
+
             }
         });
         MOSTRARButton.addActionListener(new ActionListener() {
@@ -95,12 +98,14 @@ public class tallercolas extends JDialog {
         eliminarHistorialButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 borrarHistorial();
             }
         });
         verHistorialButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 mostrarDatoshistorial();
             }
         });
@@ -127,6 +132,7 @@ public class tallercolas extends JDialog {
         procesoscola.add(proceso6);
     }
 
+    //MERODO DE ROUNDROBIN
     private void roundRobin(){
         Procesos pc=new Procesos("",0,0);
         int totalp=0;//tiempo calculando con el cuanto
@@ -170,7 +176,7 @@ public class tallercolas extends JDialog {
                     historial.push(pc);
                 }else{
                     tiempo1=tiempo1+cuanto;
-                    Conmutaciones++;
+                   // Conmutaciones++;
                     System.out.println("Tiempo "+tiempo1+":"+pc.getId()+" continua ejecutandose... ");
                     procesamiento.append("Tiempo "+tiempo1+":"+pc.getId()+" continua ejecutandose...\n");
                     pc.setTiempo(totalp);
@@ -179,11 +185,10 @@ public class tallercolas extends JDialog {
             }
 
         }
-        System.out.println("--ESTADÍSTICAS GENERADAS--");
         procesamiento.append("ESTADÍSTICAS GENERADAS\n");
-        System.out.println("Total tiempo de ejecución de todos los procesos: "+tiempo1+"ms");
+       // System.out.println("Total tiempo de ejecución de todos los procesos: "+tiempo1+"ms");
         procesamiento.append("Total tiempo de ejecución de todos los procesos: "+tiempo1+"ms\n");
-        System.out.println("Total de conmutaciones:"+Conmutaciones);
+       // System.out.println("Total de conmutaciones:"+Conmutaciones);
         procesamiento.append("Total de conmutaciones:"+Conmutaciones+"\n");
     }
 
